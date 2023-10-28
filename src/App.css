@@ -1,38 +1,96 @@
-.App {
-  text-align: center;
+/*
+  Remove all the styles of the "User-Agent-Stylesheet", except for the 'display' property
+  - The "symbol *" part is to solve Firefox SVG sprite bug
+*/
+*:where(:not(iframe, canvas, img, svg, video):not(svg *, symbol *)) {
+  all: unset;
+  display: revert;
+}
+/* Preferred box-sizing value */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Reapply the pointer cursor for anchor tags */
+a {
+  cursor: revert;
+}
+/* Remove list styles (bullets/numbers) */
+ol, ul, menu {
+  list-style: none;
+}
+/* For images to not be able to exceed their container */
+img {
+  max-width: 100%;
+}
+/* removes spacing between cells in tables */
+table {
+  border-collapse: collapse;
+}
+/* revert the 'white-space' property for textarea elements on Safari */
+textarea {
+  white-space: revert;
+}
+/* fix the feature of 'hidden' attribute.
+ display:revert; revert to element instead of attribute */
+:where([hidden]){
+  display:none;
+}
+/* revert for bug in Chromium browsers
+ - fix for the content editable attribute will work properly. */
+:where([contenteditable]){
+  -moz-user-modify: read-write;
+  -webkit-user-modify: read-write;
+  overflow-wrap: break-word;
+  -webkit-line-break: after-white-space;
+}
+/* apply back the draggable feature - exist only in Chromium and Safari */
+:where([draggable="true"]) {
+  -webkit-user-drag: element;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.App{
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  height: 100vh
 }
 
-.App-link {
-  color: #61dafb;
+
+
+/* Style the scrollbar track (background) */
+::-webkit-scrollbar {
+  width: 7px; /* Set the width of the scrollbar */
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Style the scrollbar thumb (the draggable part) */
+::-webkit-scrollbar-thumb {
+  background: #d5c3ff; /* Set the background color of the thumb */
+  border-radius: 6px; /* Rounded corners for the thumb */
+}
+
+/* Style the scrollbar track when the mouse hovers over it */
+::-webkit-scrollbar-thumb:hover {
+  background: #a787f1;
+}
+
+
+/* Style the scrollbar track (background) */
+scrollbar {
+  width: 7px; /* Set the width of the scrollbar */
+  background-color: #f1f1f1; /* Set the background color of the track */
+}
+
+/* Style the scrollbar thumb (the draggable part) */
+scrollbar-thumb {
+  background-color: #888; /* Set the background color of the thumb */
+}
+
+/* Style the scrollbar thumb when the mouse hovers over it */
+scrollbar-thumb:hover {
+  background-color: #d5c3ff;
 }

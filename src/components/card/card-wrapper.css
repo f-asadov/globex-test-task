@@ -1,0 +1,36 @@
+.card-wrapper{
+    width: 357px;
+    height: 314px;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    cursor: pointer;
+    transition: .5s ease;
+    margin-bottom: 10px;
+}
+
+.card-wrapper:hover{
+    background-color: #d5c3ff98;
+    transition: .5s ease;
+}
+
+.card-name{
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 30px;
+    margin-bottom: 24px;
+}
+
+.card-phone, .card-email{
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    display: flex;
+    margin-bottom: 15px;
+    gap:24px;
+    align-items: center;
+    color: #8189A3;
+}
+
